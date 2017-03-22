@@ -14,7 +14,7 @@ defmodule ScatterSwap.Swapper do
   end
   defp do_swap(list, index, spin) do
     digit = Enum.at(list, index)
-    map = swapper_map(index, spin)
+    map   = swapper_map(index, spin)
 
     [Enum.at(map, digit) | do_swap(list, index + 1, spin)]
   end
