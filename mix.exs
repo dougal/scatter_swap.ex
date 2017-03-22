@@ -16,6 +16,6 @@ defmodule ScatterSwap.Mixfile do
   end
 
   defp deps do
-    []
+    [{:credo, "~> 0.7", only: [:dev, :test]}]
   end
 end
