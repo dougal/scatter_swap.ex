@@ -34,20 +34,20 @@ defmodule ScatterSwap.Swapper do
   end
 
   # We want a unique map for each place in the original number
-  defp swapper_map(index, spin) do
+  defp swapper_map(seed, spin) do
     input_list = Enum.to_list(0..9)
 
-    # We want to pop a value from the input list on each iteration, maintining
-    # it's rotation also. Use accumulator on reduce() to store the remaining
-    # input plus collected output.
-    { _, output_list } = Enum.reduce(input_list, {input_list, []}, fn(int, {list, output_list}) ->
-      rotate_by = bxor(index + int, spin)
-      spun_list = Util.rotate_list(list, rotate_by)
-      { popped_digit, list } = List.pop_at(spun_list, -1)
-      { list, output_list ++ [popped_digit] }
-    end)
+    do_swapper_map(seed, spin, input_list, 0)
+  end
 
-    output_list
+  defp do_swapper_map(_, _, [], _) do
+    []
+  end
+  defp do_swapper_map(seed, spin, list, index) do
+    rotate_by              = bxor(seed + index, spin)
+    spun_list              = Util.rotate_list(list, rotate_by)
+    { popped_digit, list } = List.pop_at(spun_list, -1)
+    [popped_digit] ++ do_swapper_map(seed, spin, list, index + 1)
   end
 
 end
