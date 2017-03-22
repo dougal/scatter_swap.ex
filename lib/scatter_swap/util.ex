@@ -25,19 +25,15 @@ defmodule ScatterSwap.Util do
   # Returns `integer` as a list of digits, padded with 0s to `target_len`. Default 10.
   def integer_to_padded_digits(integer, target_len \\ 10) do
     tail_digits    = Integer.digits(integer)
-    missing_digits = target_len - length(tail_digits)
 
-    list_of_zeros(missing_digits) ++ tail_digits
+    zero_pad(tail_digits, target_len)
   end
 
-  defp list_of_zeros(len) when len < 0 do
-    []
+  defp zero_pad(tail_digits, target_len) when length(tail_digits) >= target_len do
+    tail_digits
   end
-  defp list_of_zeros(0) do
-    []
-  end
-  defp list_of_zeros(len) do
-    [0 | list_of_zeros(len - 1)]
+  defp zero_pad(tail_digits, target_len) do
+    [0 | zero_pad(tail_digits, target_len - 1)]
   end
 
 end
