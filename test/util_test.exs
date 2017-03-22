@@ -23,7 +23,7 @@ defmodule ScatterSwap.UtilTest do
     assert Util.rotate_list([1,2,3,4,5], 4) == [5,1,2,3,4]
   end
 
-  test "keeps rotatating the list when the rotation value is larger than the array" do
+  test "keeps rotating the list when the rotation value is larger than the array" do
     assert Util.rotate_list([1,2,3,4,5], 5) == [1,2,3,4,5]
     assert Util.rotate_list([1,2,3,4,5], 6) == [2,3,4,5,1]
     assert Util.rotate_list([1,2,3,4,5], 7) == [3,4,5,1,2]
