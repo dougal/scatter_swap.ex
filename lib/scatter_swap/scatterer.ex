@@ -29,8 +29,11 @@ defmodule ScatterSwap.Scatterer do
     output_list
   end
 
-  defp sum_digits(list) do
-    Enum.reduce(list, 0, fn(digit, accum) -> accum + digit end)
+  defp sum_digits([]) do
+    0
+  end
+  defp sum_digits([ head | tail ]) do
+    head + sum_digits(tail)
   end
 
 end
