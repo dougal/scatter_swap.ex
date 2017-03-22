@@ -9,28 +9,28 @@ defmodule ScatterSwap.Swapper do
     do_swap(list, 0, spin)
   end
 
-  defp do_swap(list, index, _) when length(list) == index do
+  defp do_swap([], _, _) do
     []
   end
   defp do_swap(list, index, spin) do
-    digit = Enum.at(list, index)
-    map   = swapper_map(index, spin)
+    [ digit | tail ] = list
+    map              = swapper_map(index, spin)
 
-    [Enum.at(map, digit) | do_swap(list, index + 1, spin)]
+    [Enum.at(map, digit) | do_swap(tail, index + 1, spin)]
   end
 
   def unswap(list, spin \\ 0) do
     do_unswap(list, 0, spin)
   end
 
-  defp do_unswap(list, index, _) when length(list) == index do
+  defp do_unswap([], _, _) do
     []
   end
   defp do_unswap(list, index, spin) do
-    digit = Enum.at(list, index)
-    map   = swapper_map(index, spin)
+    [ digit | tail ] = list
+    map              = swapper_map(index, spin)
 
-    [Enum.find_index(map, fn(el) -> el == digit end) | do_unswap(list, index + 1, spin)]
+    [Enum.find_index(map, fn(el) -> el == digit end) | do_unswap(tail, index + 1, spin)]
   end
 
   # We want a unique map for each place in the original number
