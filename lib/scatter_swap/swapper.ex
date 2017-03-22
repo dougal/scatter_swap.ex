@@ -35,7 +35,7 @@ defmodule ScatterSwap.Swapper do
 
   # We want a unique map for each place in the original number
   defp swapper_map(seed, spin) do
-    input_list = Enum.to_list(0..9)
+    input_list = Enum.to_list(9..0)
 
     do_swapper_map(seed, spin, input_list, 0)
   end
@@ -44,10 +44,9 @@ defmodule ScatterSwap.Swapper do
     []
   end
   defp do_swapper_map(seed, spin, list, index) do
-    rotate_by              = bxor(seed + index, spin)
-    spun_list              = Util.rotate_list(list, rotate_by)
-    { popped_digit, list } = List.pop_at(spun_list, -1)
-    [popped_digit] ++ do_swapper_map(seed, spin, list, index + 1)
+    rotate_by               = -1 * bxor(seed + index, spin)
+    [ popped_digit | tail ] = Util.rotate_list(list, rotate_by)
+    [ popped_digit | do_swapper_map(seed, spin, tail, index + 1) ]
   end
 
 end
