@@ -10,13 +10,16 @@ defmodule ScatterSwap.Scatterer do
     sum_of_digits = sum_digits(list)
     rotate_by     = bxor(spin, sum_of_digits)
 
-    { _, output_list } = Enum.reduce(Enum.to_list(0..9), {list, []}, fn(_, {list, output_list}) ->
-      spun_list = Util.rotate_list(list, rotate_by)
-      { popped_digit, list } = List.pop_at(spun_list, -1)
-      { list, output_list ++ [popped_digit] }
-    end)
+    do_scatter(list, rotate_by, 0)
+  end
 
-    output_list
+  defp do_scatter([], _, _) do
+    []
+  end
+  defp do_scatter(list, rotate_by, index) do
+    spun_list = Util.rotate_list(list, rotate_by)
+    { popped_digit, tail } = List.pop_at(spun_list, -1)
+    [popped_digit] ++ do_scatter(tail, rotate_by, index + 1)
   end
 
   def unscatter(list, spin \\ 0) do
