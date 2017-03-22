@@ -3,6 +3,8 @@ defmodule ScatterSwap.Swapper do
 
   alias ScatterSwap.Util
 
+  @initial_swapper_map_list Enum.to_list(9..0)
+
   # Using a unique map for each of the digits in the list.
   # we swap out one number for another
   def swap(list, spin \\ 0) do
@@ -35,9 +37,7 @@ defmodule ScatterSwap.Swapper do
 
   # We want a unique map for each place in the original number
   defp swapper_map(seed, spin) do
-    input_list = Enum.to_list(9..0)
-
-    do_swapper_map(seed, spin, input_list, 0)
+    do_swapper_map(seed, spin, @initial_swapper_map_list, 0)
   end
 
   defp do_swapper_map(_, _, [], _) do
