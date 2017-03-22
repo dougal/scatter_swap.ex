@@ -30,6 +30,9 @@ defmodule ScatterSwap.Util do
     list_of_zeros(missing_digits) ++ tail_digits
   end
 
+  defp list_of_zeros(len) when len < 0 do
+    []
+  end
   defp list_of_zeros(0) do
     []
   end

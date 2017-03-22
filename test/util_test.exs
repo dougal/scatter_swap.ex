@@ -44,4 +44,8 @@ defmodule ScatterSwap.UtilTest do
     assert Util.integer_to_padded_digits(6789, 5)    == [0,6,7,8,9]
   end
 
+  test "returns the list of digits unpadded where the target length is smaller than the digits" do
+    assert Util.integer_to_padded_digits(12345, 4) == [1,2,3,4,5]
+  end
+
 end
