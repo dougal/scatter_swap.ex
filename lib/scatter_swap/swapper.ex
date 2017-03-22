@@ -20,9 +20,17 @@ defmodule ScatterSwap.Swapper do
   end
 
   def unswap(list, spin \\ 0) do
-    list
-    |> Enum.with_index
-    |> Enum.map(fn({digit, index}) -> index |> swapper_map(spin) |> Enum.find_index(fn(el) -> el == digit end) end)
+    do_unswap(list, 0, spin)
+  end
+
+  defp do_unswap(list, index, _) when length(list) == index do
+    []
+  end
+  defp do_unswap(list, index, spin) do
+    digit = Enum.at(list, index)
+    map   = swapper_map(index, spin)
+
+    [Enum.find_index(map, fn(el) -> el == digit end) | do_unswap(list, index + 1, spin)]
   end
 
   # We want a unique map for each place in the original number
