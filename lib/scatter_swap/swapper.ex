@@ -3,12 +3,20 @@ defmodule ScatterSwap.Swapper do
 
   alias ScatterSwap.Util
 
-  # Using a unique map for each of the ten places,
+  # Using a unique map for each of the digits in the list.
   # we swap out one number for another
   def swap(list, spin \\ 0) do
-    list
-    |> Enum.with_index
-    |> Enum.map(fn({digit, index}) -> index |> swapper_map(spin) |> Enum.at(digit) end)
+    do_swap(list, 0, spin)
+  end
+
+  defp do_swap(list, index, _) when length(list) == index do
+    []
+  end
+  defp do_swap(list, index, spin) do
+    digit = Enum.at(list, index)
+    map = swapper_map(index, spin)
+
+    [Enum.at(map, digit) | do_swap(list, index + 1, spin)]
   end
 
   def unswap(list, spin \\ 0) do
