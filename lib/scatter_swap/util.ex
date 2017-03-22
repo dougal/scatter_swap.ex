@@ -8,6 +8,9 @@ defmodule ScatterSwap.Util do
   def rotate_list(list, 0) do
     list
   end
+  def rotate_list([x], _) do
+    [x]
+  end
   def rotate_list(list, rotate_by) when rotate_by < 0 do
     do_rotate_list(list, length(list) + rotate_by)
   end

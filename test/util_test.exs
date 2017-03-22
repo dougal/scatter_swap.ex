@@ -16,6 +16,10 @@ defmodule ScatterSwap.UtilTest do
     assert Util.rotate_list([1,2,3,4,5], 0) == [1,2,3,4,5]
   end
 
+  test "returns a single element list unmodified" do
+    assert Util.rotate_list([1], 999_999_999_999) == [1]
+  end
+
   test "rotates the list by the given amount" do
     assert Util.rotate_list([1,2,3,4,5], 1) == [2,3,4,5,1]
     assert Util.rotate_list([1,2,3,4,5], 2) == [3,4,5,1,2]
