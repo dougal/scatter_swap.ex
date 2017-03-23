@@ -53,6 +53,12 @@ defmodule ScatterSwap.Util do
       iex> ScatterSwap.Util.integer_to_padded_digits(12345, 8)
       [0, 0, 0, 1, 2, 3, 4, 5]
 
+  If `target_len` is smaller than or equal to the length of the passed integer,
+  the returned list is the same as the length of the integer.
+
+      iex> ScatterSwap.Util.integer_to_padded_digits(12345, 3)
+      [1, 2, 3, 4, 5]
+
   """
   def integer_to_padded_digits(integer, target_len \\ 10) do
     tail_digits    = Integer.digits(integer)
