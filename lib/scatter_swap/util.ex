@@ -1,7 +1,28 @@
 defmodule ScatterSwap.Util do
+  @moduledoc """
 
-  # Returns a new list by rotating `list` so that the element at `rotate_by` is
-  # the first element of the new list.
+  Utility functions used to implement `ScatterSwap`.
+
+  """
+
+  @doc """
+
+  Returns a new list by rotating `list` so that the element at index
+  `rotate_by` is the first element of the new list.
+
+      iex> ScatterSwap.Util.rotate_list([1, 2, 3, 4, 5], 1)
+      [2, 3, 4, 5, 1]
+      iex> ScatterSwap.Util.rotate_list([1, 2, 3, 4, 5], 2)
+      [3, 4, 5, 1, 2]
+
+  Negative `rotate_by` rotates `list` in the opposite direction.
+
+      iex> ScatterSwap.Util.rotate_list([1, 2, 3, 4, 5], -1)
+      [5, 1, 2, 3, 4]
+      iex> ScatterSwap.Util.rotate_list([1, 2, 3, 4, 5], -2)
+      [4, 5, 1, 2, 3]
+
+  """
   def rotate_list([], _) do
     []
   end
@@ -25,7 +46,17 @@ defmodule ScatterSwap.Util do
     suffix ++ prefix
   end
 
-  # Returns `integer` as a list of digits, padded with 0s to `target_len`. Default 10.
+  @doc """
+
+  Returns `integer` as a list of single digits, padded with 0s to `target_len`.
+  Default `target_len` is 10.
+
+      iex> ScatterSwap.Util.integer_to_padded_digits(12345)
+      [0, 0, 0, 0, 0, 1, 2, 3, 4, 5]
+      iex> ScatterSwap.Util.integer_to_padded_digits(12345, 8)
+      [0, 0, 0, 1, 2, 3, 4, 5]
+
+  """
   def integer_to_padded_digits(integer, target_len \\ 10) do
     tail_digits    = Integer.digits(integer)
 
