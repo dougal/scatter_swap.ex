@@ -14,6 +14,7 @@ So for example it will turn `7001`, `7002`, `7003` into `5270192353`, `710716382
 
 Please note, this is not encryption or related to security in any way. It lightly obfuscates an integer in a reversable way.
 
+
 ## Hashing
 
     iex> ScatterSwap.hash(3)
@@ -25,6 +26,7 @@ Please note, this is not encryption or related to security in any way. It lightl
     iex> ScatterSwap.hash(7003)
     677313294
 
+
 ## Reverse Hashing
 
     iex> ScatterSwap.reverse_hash(2037964193)
@@ -33,6 +35,7 @@ Please note, this is not encryption or related to security in any way. It lightl
     7002
     iex> ScatterSwap.reverse_hash(677313294)
     7003
+
 
 ## Spin
 
@@ -72,6 +75,12 @@ Whereas the Ruby version returns zero-padded strings, this implementation return
 ## How it Works
 
 Please see the README for Nathan and David Amick's Ruby implementation of [Scatter Swap](https://github.com/namick/scatter_swap) for more information on the hashing algorithm itself.
+
+
+## Contributing
+
+Source repository is at [https://github.com/dougal/scatter_swap.ex](https://github.com/dougal/scatter_swap.ex), please file issues and pull requests there.
+
 
 ## Installation
 
