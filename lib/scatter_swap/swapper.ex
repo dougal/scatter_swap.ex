@@ -10,6 +10,7 @@ defmodule ScatterSwap.Swapper do
 
   alias ScatterSwap.Util
 
+  # TODO: Make functions list-length agnostic.
   @initial_swapper_map_list Enum.to_list(9..0)
 
   @doc """
