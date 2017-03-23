@@ -26,17 +26,20 @@ defmodule ScatterSwap.Scatterer do
 
   def unscatter(list, spin \\ 0) do
     sum_of_digits = sum_digits(list)
-    rotate_by     = bxor(sum_of_digits, spin) * -1
+    rotate_by     = bxor(sum_of_digits, spin)
 
-    do_unscatter(list, [], rotate_by)
+    list
+    |> Enum.reverse
+    |> do_unscatter([], rotate_by)
+    |> Enum.reverse
   end
 
   defp do_unscatter([], output_list, _) do
     output_list
   end
   defp do_unscatter(list, output_list, rotate_by) do
-    { popped_digit, tail } = List.pop_at(list, -1)
-    output_list            = output_list ++ [popped_digit]
+    [ digit | tail ] = list
+    output_list            = [ digit | output_list ]
     spun_list              = Util.rotate_list(output_list, rotate_by)
     do_unscatter(tail, spun_list, rotate_by)
   end
