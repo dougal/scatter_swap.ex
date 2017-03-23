@@ -90,7 +90,7 @@ Source repository is at [https://github.com/dougal/scatter_swap.ex](https://gith
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed by adding `scatter_swap` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `scatter_swap` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -98,8 +98,18 @@ def deps do
 end
 ```
 
-Documentation can be generated with
-[ExDoc](https://github.com/elixir-lang/ex_doc) and published on
-[HexDocs](https://hexdocs.pm). Once published, the docs can be found at
-[https://hexdocs.pm/scatter_swap](https://hexdocs.pm/scatter_swap).
 
+## Documentation
+
+Documentation can be found online at [HexDocs](https://hexdocs.pm/scatter_swap).
+
+Alternatively, you can generate docs from the project root with:
+
+    mix docs
+
+
+## Copyright and Licence
+
+Copyright (c) 2017, Douglas F Shearer.
+
+ScatterSwap is licensed under the [MIT Licence](https://github.com/dougal/scatter_swap.ex/blob/master/LICENCE.txt).
