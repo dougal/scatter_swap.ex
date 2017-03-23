@@ -30,16 +30,16 @@ defmodule ScatterSwap.Scatterer do
 
     list
     |> Enum.reverse
-    |> do_scatter(rotate_by, 9)
+    |> do_scatter(rotate_by)
   end
 
-  defp do_scatter([], _, _) do
+  defp do_scatter([], _) do
     []
   end
-  defp do_scatter(list, rotate_by, index) do
+  defp do_scatter(list, rotate_by) do
     [ digit | tail ] = Util.rotate_list(list, rotate_by)
 
-    [ digit | do_scatter(tail, rotate_by, index - 1) ]
+    [ digit | do_scatter(tail, rotate_by) ]
   end
 
 
