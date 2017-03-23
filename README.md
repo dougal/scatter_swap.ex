@@ -17,48 +17,54 @@ Please note, this is not encryption or related to security in any way. It lightl
 
 ## Hashing
 
-    iex> ScatterSwap.hash(3)
-    2057964173
-    iex> ScatterSwap.hash(7001)
-    2037964193
-    iex> ScatterSwap.hash(7002)
-    3613429027
-    iex> ScatterSwap.hash(7003)
-    677313294
+```elixir
+iex> ScatterSwap.hash(3)
+2057964173
+iex> ScatterSwap.hash(7001)
+2037964193
+iex> ScatterSwap.hash(7002)
+3613429027
+iex> ScatterSwap.hash(7003)
+677313294
+```
 
 
 ## Reverse Hashing
 
-    iex> ScatterSwap.reverse_hash(2037964193)
-    7001
-    iex> ScatterSwap.reverse_hash(3613429027)
-    7002
-    iex> ScatterSwap.reverse_hash(677313294)
-    7003
-
+```elixir
+iex> ScatterSwap.reverse_hash(2037964193)
+7001
+iex> ScatterSwap.reverse_hash(3613429027)
+7002
+iex> ScatterSwap.reverse_hash(677313294)
+7003
+```
 
 ## Spin
 
 A second argument `spin` can be passed to each of `ScatterSwap.hash/2` or `ScatterSwap.reverse_hash/2`, as a seed to alter the hashing process.
 
-    iex(8)> ScatterSwap.hash(123)
-    2059944173
-    iex(9)> ScatterSwap.hash(123, 1)
-    3480094612
-    iex(10)> ScatterSwap.hash(123, 2)
-    6571025309
-    iex(11)> ScatterSwap.hash(123, 728283)
-    9180174562
+```elixir
+iex(8)> ScatterSwap.hash(123)
+2059944173
+iex(9)> ScatterSwap.hash(123, 1)
+3480094612
+iex(10)> ScatterSwap.hash(123, 2)
+6571025309
+iex(11)> ScatterSwap.hash(123, 728283)
+9180174562
+```
 
-    iex> ScatterSwap.reverse_hash(2059944173)
-    123
-    iex> ScatterSwap.reverse_hash(3480094612, 1)
-    123
-    iex> ScatterSwap.reverse_hash(6571025309, 2)
-    123
-    iex> ScatterSwap.reverse_hash(9180174562, 728283)
-    123
-
+```elixir
+iex> ScatterSwap.reverse_hash(2059944173)
+123
+iex> ScatterSwap.reverse_hash(3480094612, 1)
+123
+iex> ScatterSwap.reverse_hash(6571025309, 2)
+123
+iex> ScatterSwap.reverse_hash(9180174562, 728283)
+123
+```
 
 ## Limitations
 
