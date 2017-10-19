@@ -68,7 +68,7 @@ iex> ScatterSwap.reverse_hash(9180174562, 728283)
 
 ## Limitations
 
-This library is built for integeres which can be expressed in 10 digits. The largest number it can deal with is 10 Billion - 1:
+This library is built for integers which can be expressed in 10 digits. The largest number it can deal with is 10 Billion - 1:
 
     9999999999
 
